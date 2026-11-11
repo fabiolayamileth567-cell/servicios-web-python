@@ -1,0 +1,29 @@
+SERVICIOS WEB EN PYTHON - PROYECTO INTERACTIVO
+
+REQUISITOS:
+- Python 3.9 o superior.
+
+INSTALACION EN WINDOWS:
+1. Extrae el ZIP en una carpeta.
+2. Abre CMD dentro de esa carpeta.
+3. Ejecuta:
+   py -m venv venv
+   venv\\Scripts\\activate
+   pip install -r requirements.txt
+   py app.py
+4. Abre en el navegador: http://127.0.0.1:5000
+
+Si el comando py no funciona, prueba python.
+
+USO:
+- Selecciona uno de los cinco temas.
+- Lee la explicación y revisa el código Python.
+- Pulsa Ejecutar demostración para llamar al servidor.
+- En el tema 5, escribe un nombre y pulsa Enviar con POST.
+- Copiar código copia el fragmento visible.
+
+NOTAS:
+- La demostración de clima usa datos simulados.
+- La demostración GitHub necesita Internet.
+- Es un proyecto educativo. Para producción hay que desactivar debug,
+  validar entradas y configurar HTTPS y controles de seguridad.
