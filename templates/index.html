@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Servicios Web en Python</title>
+<style>
+:root{--bg:#07152f;--panel:#10264a;--line:#294a79;--text:#eef5ff;--muted:#b8c9e5;--accent:#55c8ff}
+*{box-sizing:border-box}body{margin:0;font-family:Segoe UI,Arial,sans-serif;color:var(--text);background:radial-gradient(circle at 50% 0,#173e76,#091a38 48%,#050d1d);min-height:100vh}
+header{text-align:center;padding:38px 18px 24px}.eyebrow{color:#82d8ff;letter-spacing:.15em;text-transform:uppercase;font-size:.78rem;font-weight:800}
+h1{font-size:clamp(2rem,5vw,3.4rem);margin:10px 0}header p{color:var(--muted);max-width:760px;margin:auto;line-height:1.6}
+.python{display:inline-grid;place-items:center;width:62px;height:62px;border-radius:18px;background:linear-gradient(145deg,#ffe16b,#3d9de8);color:#09224b;font-size:2rem;font-weight:900}
+main{width:min(1160px,94%);margin:0 auto 45px}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
+.topic{text-align:left;border:1px solid var(--line);background:linear-gradient(145deg,#16345f,#0c1d3b);color:var(--text);padding:18px;border-radius:18px;cursor:pointer;min-height:165px;transition:.2s}
+.topic:hover,.topic.active{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 12px 30px #0005}
+.num{color:var(--accent);font-size:.78rem;font-weight:800;letter-spacing:.1em}.ico{font-size:2rem;display:block;margin:12px 0}
+.topic strong{display:block;font-size:1.02rem;line-height:1.3}.topic small{display:block;color:var(--muted);margin-top:8px;line-height:1.4}
+.workspace{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}.panel{background:linear-gradient(145deg,#10284d,#0b1a35);border:1px solid var(--line);border-radius:20px;padding:22px;min-width:0;box-shadow:0 14px 35px #0003}
+.panel h2{margin:5px 0 8px;font-size:1.4rem}.sub{color:#7ed7ff;font-size:.9rem;font-weight:700}.desc{color:var(--muted);line-height:1.65}
+pre{background:#050d1b;border:1px solid #263f64;border-radius:13px;padding:17px;overflow:auto;color:#c5f2ff;line-height:1.55;font-size:.88rem;white-space:pre-wrap}
+ol{padding-left:22px;color:var(--muted);line-height:1.6}li{margin:6px 0}.actions,.demo-form{display:flex;flex-wrap:wrap;gap:9px;margin-top:15px}
+.action{background:#1b4777;color:white;border:1px solid #3b6da5;border-radius:10px;padding:10px 14px;cursor:pointer;font-weight:700}
+.action:hover{background:#28639f}.result{background:#050d1b;border:1px dashed #3c6b9b;padding:14px;border-radius:12px;color:#c8f3d9;min-height:54px;white-space:pre-wrap;overflow-wrap:anywhere}
+input{background:#07152b;border:1px solid #35577f;border-radius:9px;color:white;padding:10px 12px;min-width:150px}
+footer{text-align:center;color:#8fa7c9;padding:10px 18px 32px;font-size:.88rem}
+@media(max-width:760px){.workspace{grid-template-columns:1fr}}
+</style></head>
+<body>
+<header><div class="python">Py</div><div class="eyebrow">Exposición</div>
+<h1>Servicios Web en Python</h1><p>  Pequeña Demostración en código Python.</p></header>
+<main>
+<section class="cards" aria-label="Temas de la exposición">
+<button class="topic active" data-topic="concepto"><span class="num">SERVICIOS WEB </span><span class="ico">🌐</span><strong>¿Qué son los servicios web?</strong><small>Aplicaciones que se comunican e intercambian información.</small></button>
+<button class="topic" data-topic="conexion"><span class="num"> COMUNICACION HTTP.</span><span class="ico">🔁</span><strong>¿Cómo funcionan y se conectan?</strong><small>Cliente, servidor y solicitudes HTTP.</small></button>
+<button class="topic" data-topic="herramientas"><span class="num">CONSUMO E IMPLEMENTACION EN PYTHON  </span><span class="ico">🐍</span><strong>¿Cómo se aprovechan en Python?</strong><small>Requests, Flask y consumo de API.</small></button>
+<button class="topic" data-topic="ejemplos"><span class="num">APLOICACIONES E INTEGRACION.</span><span class="ico">🌦️</span><strong>Ejemplos de servicios web</strong><small>Clima, mapas, monedas y compras.</small></button>
+<button class="topic" data-topic="ventajas"><span class="num">SEGURIDAD Y BENEFICIOS.</span><span class="ico">🛡️</span><strong>Ventajas y conclusión</strong><small>Integración, automatización y seguridad.</small></button>
+</section>
+<section class="workspace">
+<article class="panel"><div class="sub" id="topic-subtitle"></div><h2 id="topic-title"></h2><p class="desc" id="topic-description"></p>
+<h3>¿Qué hace este código?</h3><ol id="explanation"></ol>
+<div class="actions"><button class="action" id="run-demo">▶ Ejecutar demostración</button><button class="action" id="copy-code">Copiar código</button></div>
+<div id="extra-input" class="demo-form" hidden><input id="demo-name" placeholder="Escribe tu nombre" aria-label="Nombre"><button class="action" id="send-name">Enviar con POST</button></div>
+<h3>Respuesta del servicio</h3><div class="result" id="result" aria-live="polite">Presiona “Ejecutar demostración” para probarlo.</div></article>
+<article class="panel"><div class="sub">PYTHON · FRAGMENTO DE EJEMPLO</div><h2>Código del tema</h2><pre><code id="code"></code></pre>
+<p class="desc">Este fragmento forma parte de <strong>app.py</strong>, el servidor Python que acompaña esta página. Los botones llaman rutas reales de ese servidor.</p></article>
+</section></main>
+<footer>Proyecto educativo: una página web que se comunica con un servidor desarrollado en Python y Flask.</footer>
+<script>
+const topics={{ topics|tojson }};let selected="concepto";
+function showTopic(key){selected=key;const t=topics[key];
+document.querySelectorAll(".topic").forEach(b=>b.classList.toggle("active",b.dataset.topic===key));
+document.getElementById("topic-subtitle").textContent=t.subtitle;document.getElementById("topic-title").textContent=t.title;
+document.getElementById("topic-description").textContent=t.description;document.getElementById("code").textContent=t.code;
+const list=document.getElementById("explanation");list.replaceChildren();
+t.explanation.forEach(line=>{const li=document.createElement("li");li.textContent=line;list.appendChild(li)});
+document.getElementById("result").textContent="Presiona “Ejecutar demostración” para probarlo.";
+document.getElementById("extra-input").hidden=key!=="ventajas";}
+document.querySelectorAll(".topic").forEach(b=>b.addEventListener("click",()=>showTopic(b.dataset.topic)));
+document.getElementById("run-demo").addEventListener("click",async()=>{const result=document.getElementById("result");result.textContent="Conectando con Python...";
+try{const r=await fetch(`/api/demo/${topics[selected].demo}`);const data=await r.json();result.textContent=JSON.stringify(data,null,2)}
+catch(e){result.textContent="No se pudo contactar con Flask. Comprueba que el servidor esté ejecutándose."}});
+document.getElementById("send-name").addEventListener("click",async()=>{const nombre=document.getElementById("demo-name").value.trim();const result=document.getElementById("result");
+try{const r=await fetch("/api/demo/eco",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({nombre})});const data=await r.json();result.textContent=JSON.stringify(data,null,2)}
+catch(e){result.textContent="No se pudo contactar con el servidor Python."}});
+document.getElementById("copy-code").addEventListener("click",async()=>{try{await navigator.clipboard.writeText(topics[selected].code);document.getElementById("result").textContent="Código copiado al portapapeles."}
+catch(e){document.getElementById("result").textContent="Selecciona el código y cópialo manualmente."}});
+showTopic("concepto");
+</script></body></html>
